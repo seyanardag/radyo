@@ -243,44 +243,64 @@ $(document).ready(function () {
         console.log('Uygulama zaten PWA olarak çalışıyor');
     } else {
         console.log('Uygulama henüz PWA olarak yüklenmemiş');
-        // Sayfa yüklendiğinde hemen yükleme popup'ını göster
-        showInstallPopup();
+        // Kullanıcıya bilgi ver
+        showInfoMessage();
+    }
+
+    // Bilgi mesajını göster
+    function showInfoMessage() {
+        const infoPopup = document.createElement('div');
+        infoPopup.className = 'install-popup';
+        infoPopup.innerHTML = `
+            <div class="install-popup-content">
+                <h3>Radyo Uygulaması</h3>
+                <p>Uygulamayı yüklemek için sayfada biraz zaman geçirmeniz gerekiyor. Birkaç dakika sonra yükleme seçeneği otomatik olarak görünecektir.</p>
+                <div class="install-buttons">
+                    <button class="install-no">Tamam</button>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(infoPopup);
+
+        // Tamam butonuna tıklandığında
+        document.querySelector('.install-no').addEventListener('click', () => {
+            infoPopup.remove();
+        });
     }
 
     // PWA yükleme popup'ını göster
     function showInstallPopup() {
+        if (!deferredPrompt) {
+            console.log('PWA yükleme özelliği henüz hazır değil');
+            return;
+        }
+
         console.log('PWA yükleme popup\'ı gösteriliyor');
         const installPopup = document.createElement('div');
         installPopup.className = 'install-popup';
         installPopup.innerHTML = `
-        <div class="install-popup-content">
-            <h3>Radyo Uygulamasını Yükleyin</h3>
-            <p>Radyo uygulamasını cihazınıza yükleyerek daha hızlı erişim sağlayabilirsiniz.</p>
-            <div class="install-buttons">
-                <button class="install-yes">Yükle</button>
-                <button class="install-no">Daha Sonra</button>
+            <div class="install-popup-content">
+                <h3>Radyo Uygulamasını Yükleyin</h3>
+                <p>Radyo uygulamasını cihazınıza yükleyerek daha hızlı erişim sağlayabilirsiniz.</p>
+                <div class="install-buttons">
+                    <button class="install-yes">Yükle</button>
+                    <button class="install-no">Daha Sonra</button>
+                </div>
             </div>
-        </div>
-    `;
+        `;
         document.body.appendChild(installPopup);
 
         // Yükleme butonuna tıklandığında
         document.querySelector('.install-yes').addEventListener('click', async () => {
             console.log('Yükle butonuna tıklandı');
             installPopup.remove();
-            if (deferredPrompt) {
-                deferredPrompt.prompt();
-                const { outcome } = await deferredPrompt.userChoice;
-                console.log('Kullanıcı seçimi:', outcome);
-                if (outcome === 'accepted') {
-                    console.log('Kullanıcı PWA yüklemeyi kabul etti');
-                }
-                deferredPrompt = null;
-            } else {
-                console.log('deferredPrompt mevcut değil');
-                // Eğer deferredPrompt yoksa, kullanıcıya bilgi ver
-                alert('PWA yükleme özelliği şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.');
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('Kullanıcı seçimi:', outcome);
+            if (outcome === 'accepted') {
+                console.log('Kullanıcı PWA yüklemeyi kabul etti');
             }
+            deferredPrompt = null;
         });
 
         // Daha sonra butonuna tıklandığında
@@ -295,6 +315,8 @@ $(document).ready(function () {
         console.log('beforeinstallprompt event tetiklendi');
         e.preventDefault();
         deferredPrompt = e;
+        // Event tetiklendiğinde popup'ı göster
+        showInstallPopup();
     });
 
     // PWA zaten yüklüyse
