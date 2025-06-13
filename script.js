@@ -238,12 +238,14 @@ $(document).ready(function () {
 
     console.log('PWA yükleme scripti başlatıldı');
 
-    window.addEventListener('beforeinstallprompt', (e) => {
-        console.log('beforeinstallprompt event tetiklendi');
-        e.preventDefault();
-        deferredPrompt = e;
+    // PWA yükleme durumunu kontrol et
+    if (window.matchMedia('(display-mode: standalone)').matches) {
+        console.log('Uygulama zaten PWA olarak çalışıyor');
+    }
 
-        // PWA yükleme popup'ını göster
+    // PWA yükleme butonunu göster
+    function showInstallButton() {
+        console.log('PWA yükleme butonu gösteriliyor');
         const installPopup = document.createElement('div');
         installPopup.className = 'install-popup';
         installPopup.innerHTML = `
@@ -262,13 +264,15 @@ $(document).ready(function () {
         document.querySelector('.install-yes').addEventListener('click', async () => {
             console.log('Yükle butonuna tıklandı');
             installPopup.remove();
-            deferredPrompt.prompt();
-            const { outcome } = await deferredPrompt.userChoice;
-            console.log('Kullanıcı seçimi:', outcome);
-            if (outcome === 'accepted') {
-                console.log('Kullanıcı PWA yüklemeyi kabul etti');
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('Kullanıcı seçimi:', outcome);
+                if (outcome === 'accepted') {
+                    console.log('Kullanıcı PWA yüklemeyi kabul etti');
+                }
+                deferredPrompt = null;
             }
-            deferredPrompt = null;
         });
 
         // Daha sonra butonuna tıklandığında
@@ -276,15 +280,17 @@ $(document).ready(function () {
             console.log('Daha sonra butonuna tıklandı');
             installPopup.remove();
         });
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        console.log('beforeinstallprompt event tetiklendi');
+        e.preventDefault();
+        deferredPrompt = e;
+        showInstallButton();
     });
 
     // PWA zaten yüklüyse
     window.addEventListener('appinstalled', (e) => {
         console.log('PWA başarıyla yüklendi', e);
     });
-
-    // PWA yükleme durumunu kontrol et
-    if (window.matchMedia('(display-mode: standalone)').matches) {
-        console.log('Uygulama zaten PWA olarak çalışıyor');
-    }
 }); 
