@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Radyo</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
+    <!-- Tema Rengi -->
+    <meta name="theme-color" content="#1e3c72">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Modern Radyo</h1>
+            <p class="slogan">En iyi müzik, en iyi kalite</p>
+        </header>
+
+        <main>
+            <div class="player-container">
+                <div class="album-art">
+                    <img src="https://via.placeholder.com/300" alt="Albüm Kapağı" id="albumArt">
+                </div>
+                <div class="player-controls">
+                    <div class="song-info">
+                        <h2 id="songTitle">Şarkı Adı</h2>
+                        <p id="artistName">Sanatçı</p>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time-info">
+                        <span id="currentTime">0:00</span>
+                        <span id="totalTime">0:00</span>
+                    </div>
+                    <div class="data-usage">
+                        <span id="dataUsage">İndirilen: 0 KB</span>
+                    </div>
+                    <div class="control-buttons">
+                        <button id="prevBtn"><i class="fas fa-backward"></i></button>
+                        <button id="playBtn"><i class="fas fa-play"></i></button>
+                        <button id="nextBtn"><i class="fas fa-forward"></i></button>
+                    </div>
+                    <div class="volume-control">
+                        <i class="fas fa-volume-up"></i>
+                        <input type="range" id="volumeSlider" min="0" max="100" value="100">
+                    </div>
+                </div>
+            </div>
+
+            <div class="playlist">
+                <h3>Radyo İstasyonları</h3>
+                <ul id="playlist">
+                </ul>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2025 Modern Radyo. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
