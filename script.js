@@ -241,23 +241,27 @@ $(document).ready(function () {
     // PWA yükleme durumunu kontrol et
     if (window.matchMedia('(display-mode: standalone)').matches) {
         console.log('Uygulama zaten PWA olarak çalışıyor');
+    } else {
+        console.log('Uygulama henüz PWA olarak yüklenmemiş');
+        // Sayfa yüklendiğinde hemen yükleme popup'ını göster
+        showInstallPopup();
     }
 
-    // PWA yükleme butonunu göster
-    function showInstallButton() {
-        console.log('PWA yükleme butonu gösteriliyor');
+    // PWA yükleme popup'ını göster
+    function showInstallPopup() {
+        console.log('PWA yükleme popup\'ı gösteriliyor');
         const installPopup = document.createElement('div');
         installPopup.className = 'install-popup';
         installPopup.innerHTML = `
-            <div class="install-popup-content">
-                <h3>Radyo Uygulamasını Yükleyin</h3>
-                <p>Radyo uygulamasını cihazınıza yükleyerek daha hızlı erişim sağlayabilirsiniz.</p>
-                <div class="install-buttons">
-                    <button class="install-yes">Yükle</button>
-                    <button class="install-no">Daha Sonra</button>
-                </div>
+        <div class="install-popup-content">
+            <h3>Radyo Uygulamasını Yükleyin</h3>
+            <p>Radyo uygulamasını cihazınıza yükleyerek daha hızlı erişim sağlayabilirsiniz.</p>
+            <div class="install-buttons">
+                <button class="install-yes">Yükle</button>
+                <button class="install-no">Daha Sonra</button>
             </div>
-        `;
+        </div>
+    `;
         document.body.appendChild(installPopup);
 
         // Yükleme butonuna tıklandığında
@@ -272,6 +276,10 @@ $(document).ready(function () {
                     console.log('Kullanıcı PWA yüklemeyi kabul etti');
                 }
                 deferredPrompt = null;
+            } else {
+                console.log('deferredPrompt mevcut değil');
+                // Eğer deferredPrompt yoksa, kullanıcıya bilgi ver
+                alert('PWA yükleme özelliği şu anda kullanılamıyor. Lütfen daha sonra tekrar deneyin.');
             }
         });
 
@@ -282,11 +290,11 @@ $(document).ready(function () {
         });
     }
 
+    // PWA yükleme olayını dinle
     window.addEventListener('beforeinstallprompt', (e) => {
         console.log('beforeinstallprompt event tetiklendi');
         e.preventDefault();
         deferredPrompt = e;
-        showInstallButton();
     });
 
     // PWA zaten yüklüyse
