@@ -13,8 +13,8 @@
             "type": "image/png"
         }
     ],
-    "start_url": "/radyo/index.html", // Uygulama açılınca hangi sayfa yüklenecek
-    "scope": "/", // Uygulaman hangi adreslerde geçerli
+    "start_url": "./index.html", // Uygulama açılınca hangi sayfa yüklenecek
+    "scope": "./", // Uygulaman hangi adreslerde geçerli
     "theme_color": "#1e3c72",
     "background_color": "#2a5298",
     "display": "standalone",
