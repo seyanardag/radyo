@@ -3,8 +3,11 @@ name: Generate MP3 JSON
 on:
   push:
     paths:
-      - 'mp3/**'    # Sadece mp3 klasörü değişirse çalışacak
+      - 'mp3/**'
       - '.github/workflows/generate-mp3-json.yml'
+
+permissions:
+  contents: write  # Push yapabilmek için yetki veriyoruz
 
 jobs:
   build:
@@ -23,9 +26,11 @@ jobs:
         run: node generate-mp3-json.js
 
       - name: Değişiklikleri GitHub'a pushla
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add mp3.json
-          git commit -m 'Otomatik mp3.json güncellendi->from actions' || echo "Değişiklik yok.->from actions"
-          git push
+          git commit -m 'Otomatik mp3.json güncellendi -> from actions' || echo "Değişiklik yok."
+          git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
