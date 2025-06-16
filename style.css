@@ -56,6 +56,16 @@ header h1 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+.album-art i.fa-music {
+    font-size: 64px;
+    color: #5d6da0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
 .player-controls {
     max-width: 600px;
     margin: 0 auto;
@@ -203,7 +213,22 @@ header h1 {
     width: 40px;
     height: 40px;
     border-radius: 5px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.station-image img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 5px;
+}
+
+.station-image i.fa-music {
+    font-size: 24px;
+    color: #5d6da0;
 }
 
 .station-title {

@@ -12,6 +12,42 @@ $(document).ready(function () {
         $('#dataUsage').parent().toggleClass('show');
     });
 
+    // MP3 dosyalarını kontrol et ve JSON verisiyle birleştir
+    async function checkAndMergeMP3Files(jsonData) {
+        try {
+            const response = await fetch('mp3/');
+            const text = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(text, 'text/html');
+            const mp3Files = Array.from(doc.querySelectorAll('a'))
+                .filter(a => a.href.endsWith('.mp3'))
+                .map(a => decodeURIComponent(a.href.split('/').pop()));
+
+            // JSON'da olmayan MP3'leri bul
+            const existingUrls = jsonData.map(item => decodeURIComponent(item.url.split('/').pop()));
+            const newMP3s = mp3Files.filter(file => !existingUrls.includes(file));
+
+            // Yeni MP3'leri ekle
+            newMP3s.forEach(file => {
+                const fileName = file.replace('.mp3', '');
+                const title = fileName.includes(' - ') ? fileName.split(' - ')[1] : fileName;
+                const artist = fileName.includes(' - ') ? fileName.split(' - ')[0] : 'Bilinmeyen Sanatçı';
+
+                jsonData.push({
+                    title: title,
+                    artist: artist,
+                    url: `./mp3/${encodeURIComponent(file)}`,
+                    cover: '<i class="fas fa-music"></i>'
+                });
+            });
+
+            return jsonData;
+        } catch (error) {
+            console.error('MP3 dosyaları kontrol edilirken hata oluştu:', error);
+            return jsonData;
+        }
+    }
+
     // Mod değiştirme butonu
     $('#modeSwitch').click(function () {
         isRadioMode = !isRadioMode;
@@ -27,8 +63,16 @@ $(document).ready(function () {
     });
 
     // Radyo istasyonları listesini yükle
-    function loadStations(jsonFile) {
-        $.getJSON(jsonFile, function (data) {
+    async function loadStations(jsonFile) {
+        try {
+            const response = await fetch(jsonFile);
+            let data = await response.json();
+
+            // Eğer MP3 modundaysak, dosyaları kontrol et
+            if (!isRadioMode) {
+                data = await checkAndMergeMP3Files(data);
+            }
+
             stations = data;
             currentStationIndex = 0;
             createPlaylist();
@@ -36,7 +80,9 @@ $(document).ready(function () {
             if (isPlaying) {
                 playStation();
             }
-        });
+        } catch (error) {
+            console.error('Veri yüklenirken hata oluştu:', error);
+        }
     }
 
     // İlk yükleme
@@ -56,11 +102,36 @@ $(document).ready(function () {
                 .addClass('station-number')
                 .text((index + 1).toString().padStart(2, '0'));
 
-            // Radyo resmi
-            const $img = $('<img>')
-                .addClass('station-image')
-                .attr('src', station.cover)
-                .attr('alt', station.title);
+            // Radyo resmi veya müzik ikonu
+            // let $img;
+            // if (station.cover.startsWith('<i')) {
+            //     $img = $('<div>')
+            //         .addClass('station-image')
+            //         .html(station.cover);
+            // } else {
+            //     $img = $('<img>')
+            //         .addClass('station-image')
+            //         .attr('src', station.cover)
+            //         .attr('alt', station.title);
+            // }
+
+            let $img;
+
+            if (station.cover && station.cover.trim().startsWith('<i')) {
+                // Eğer HTML ikon ise
+                $img = $('<div>')
+                    .addClass('station-image')
+                    .html(station.cover);
+            } else if (station.cover) {
+                // Eğer resim URL'si ise
+                $img = $('<img>')
+                    .addClass('station-image')
+                    .attr('src', station.cover)
+                    .attr('alt', station.title || '');
+            } else {
+                // Eğer cover yoksa boş bir div oluştur
+                $img = $('<div>').addClass('station-image');
+            }
 
             // Radyo adı
             const $title = $('<span>')
@@ -82,7 +153,20 @@ $(document).ready(function () {
         const station = stations[currentStationIndex];
         $('#songTitle').text(station.title);
         $('#artistName').text(station.artist);
-        $('#albumArt').attr('src', station.cover);
+
+        // Albüm kapağı veya müzik ikonu
+        if (station.cover.startsWith('<i')) {
+            $('#albumArt').replaceWith($('<div>')
+                .attr('id', 'albumArt')
+                .addClass('album-art')
+                .html(station.cover));
+        } else {
+            $('#albumArt').replaceWith($('<img>')
+                .attr('id', 'albumArt')
+                .addClass('album-art')
+                .attr('src', station.cover)
+                .attr('alt', station.title));
+        }
 
         // Çalma listesindeki aktif radyoyu güncelle
         $('#playlist li').removeClass('active');
