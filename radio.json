@@ -1,0 +1,44 @@
+[
+    {
+        "title": "Süper FM",
+        "artist": "Canlı Yayın",
+        "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/SUPER_FM128AAC.aac?",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/super-fm-dinle.jpg"
+    },
+    {
+        "title": "Fenomen",
+        "artist": "Canlı Yayın",
+        "url": "https://live.radyofenomen.com/fenomen/128/icecast.audio",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/radyo-fenomen.jpg"
+    },
+    {
+        "title": "Power Türk",
+        "artist": "Canlı Yayın",
+        "url": "https://live.powerapp.com.tr/powerturk/mpeg/icecast.audio?/;stream.mp3",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/power-turk-dinle.png"
+    },
+    {
+        "title": "Slow Türk",
+        "artist": "Canlı Yayın",
+        "url": "https://radyo.duhnet.tv/ak_dtvh_slowturk?",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/slow-turk-dinle.jpg"
+    },
+    {
+        "title": "Alem FM",
+        "artist": "Canlı Yayın",
+        "url": "https://turkmedya.radyotvonline.net/alemfmaac?",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/alem-fm.jpg"
+    },
+    {
+        "title": "Joy Türk",
+        "artist": "Canlı Yayın",
+        "url": "https://playerservices.streamtheworld.com/api/livestream-redirect/JOY_TURK128AAC.aac?",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/joy-turk-dinle.jpg"
+    },
+    {
+        "title": "Best FM",
+        "artist": "Canlı Yayın",
+        "url": "https://officialbestfm.radyotvonline.net/bestfmofficial?/;stream.mp3",
+        "cover": "https://www.canliradyodinle.fm/wp-content/uploads/best-fm-dinle-100x100.png"
+    }
+]

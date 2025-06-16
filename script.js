@@ -4,70 +4,43 @@ $(document).ready(function () {
     let currentStationIndex = 0;
     let totalBytesLoaded = 0;
     let startTime = 0;
+    let stations = [];
+    let isRadioMode = true;
 
     // Albüm kapağına tıklama
     $('.album-art').click(function () {
         $('#dataUsage').parent().toggleClass('show');
     });
 
-    // Radyo istasyonları listesi
-    const stations = [
-        {
-            title: "Süper FM",
-            artist: "Canlı Yayın",
-            url: "https://playerservices.streamtheworld.com/api/livestream-redirect/SUPER_FM128AAC.aac?",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/super-fm-dinle.jpg"
-        },
-        {
-            title: "Fenomen",
-            artist: "Canlı Yayın",
-            url: "https://live.radyofenomen.com/fenomen/128/icecast.audio",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/radyo-fenomen.jpg"
-        },
-        {
-            title: "Power Türk",
-            artist: "Canlı Yayın",
-            url: "https://live.powerapp.com.tr/powerturk/mpeg/icecast.audio?/;stream.mp3",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/power-turk-dinle.png"
-        },
-        {
-            title: "Slow Türk",
-            artist: "Canlı Yayın",
-            url: "https://radyo.duhnet.tv/ak_dtvh_slowturk?",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/slow-turk-dinle.jpg"
-        },
-        {
-            title: "Alem FM",
-            artist: "Canlı Yayın",
-            url: "https://turkmedya.radyotvonline.net/alemfmaac?",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/alem-fm.jpg"
-        },
-        {
-            title: "Joy Türk",
-            artist: "Canlı Yayın",
-            url: "https://playerservices.streamtheworld.com/api/livestream-redirect/JOY_TURK128AAC.aac?",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/joy-turk-dinle.jpg"
-        },
-        {
-            title: "Best FM",
-            artist: "Canlı Yayın",
-            url: "https://officialbestfm.radyotvonline.net/bestfmofficial?/;stream.mp3",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/best-fm-dinle-100x100.png"
-        },
-        {
-            title: "Number One FM",
-            artist: "Canlı Yayın",
-            url: "https://www.canliradyodinle.fm/28a6837b-461f-45f7-a7c2-9865f6c93122",
-            cover: "https://www.canliradyodinle.fm/wp-content/uploads/number-one-turk-fm.jpg"
-        },
-        {
-            title: "Ava Max - So am I",
-            artist: "Ava Max",
-            url: "./mp3/Ava Max - So Am I [Official Music Video].mp3",
-            cover: "https://i.ytimg.com/vi_webp/SxGLPVvNjvY/maxresdefault.webp?v=5c8132a0"
-        }
+    // Mod değiştirme butonu
+    $('#modeSwitch').click(function () {
+        isRadioMode = !isRadioMode;
+        const $icon = $(this).find('i');
 
-    ];
+        if (isRadioMode) {
+            $icon.removeClass('fa-music').addClass('fa-broadcast-tower');
+            loadStations('radio.json');
+        } else {
+            $icon.removeClass('fa-broadcast-tower').addClass('fa-music');
+            loadStations('mp3.json');
+        }
+    });
+
+    // Radyo istasyonları listesini yükle
+    function loadStations(jsonFile) {
+        $.getJSON(jsonFile, function (data) {
+            stations = data;
+            currentStationIndex = 0;
+            createPlaylist();
+            updateStationInfo();
+            if (isPlaying) {
+                playStation();
+            }
+        });
+    }
+
+    // İlk yükleme
+    loadStations('radio.json');
 
     // Çalma listesini oluştur
     function createPlaylist() {
@@ -225,9 +198,5 @@ $(document).ready(function () {
         updateStationInfo();
         playStation();
     });
-
-    // Sayfa yüklendiğinde çalma listesini oluştur ve ilk radyoyu hazırla
-    createPlaylist();
-    updateStationInfo();
 
 }); 
