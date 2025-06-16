@@ -1,0 +1,31 @@
+name: Generate MP3 JSON
+
+on:
+  push:
+    paths:
+      - 'mp3/**'    # Sadece mp3 klasörü değişirse çalışacak
+      - '.github/workflows/generate-mp3-json.yml'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Kodu indir
+        uses: actions/checkout@v3
+
+      - name: Node.js kur
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Bağımlılık yok, direkt scripti çalıştır
+        run: node generate-mp3-json.js
+
+      - name: Değişiklikleri GitHub'a pushla
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add mp3.json
+          git commit -m 'Otomatik mp3.json güncellendi->from actions' || echo "Değişiklik yok.->from actions"
+          git push
