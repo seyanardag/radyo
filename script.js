@@ -15,7 +15,7 @@ $(document).ready(function () {
     // MP3 dosyalarını kontrol et ve JSON verisiyle birleştir
     async function checkAndMergeMP3Files(jsonData) {
         try {
-            const response = await fetch('mp3/');
+            const response = await fetch('./mp3/');
             const text = await response.text();
             const parser = new DOMParser();
             const doc = parser.parseFromString(text, 'text/html');
