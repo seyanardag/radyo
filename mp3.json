@@ -1,13 +1,56 @@
 [
     {
-        "title": "Ava Max - So Am I",
-        "artist": "Ava Max",
-        "url": "./mp3/Ava Max - So Am I [Official Music Video].mp3",
-        "cover": "https://i.ytimg.com/vi_webp/SxGLPVvNjvY/maxresdefault.webp?v=5c8132a0"
+        "title": "Alone, Pt. II",
+        "artist": "Alan Walker & Ava Max",
+        "url": "./mp3/Alan%20Walker%20%26%20Ava%20Max%20-%20Alone%2C%20Pt.%20II.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
     },
     {
-        "title": "Ava Max - Alone",
+        "title": "Hymn For The Weekend [Remix]",
+        "artist": "Alan Walker vs Coldplay",
+        "url": "./mp3/Alan%20Walker%20vs%20Coldplay%20-%20Hymn%20For%20The%20Weekend%20%5BRemix%5D.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Ciao Adios [Official Video]",
+        "artist": "Anne-Marie",
+        "url": "./mp3/Anne-Marie%20-%20Ciao%20Adios%20%5BOfficial%20Video%5D.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "My Head & My Heart",
         "artist": "Ava Max",
-        "url": "./mp3/Alan Walker & Ava Max - Alone, Pt. II.mp3"
+        "url": "./mp3/Ava%20Max%20-%20My%20Head%20%26%20My%20Heart.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "So Am I [Official Music Video]",
+        "artist": "Ava Max",
+        "url": "./mp3/Ava%20Max%20-%20So%20Am%20I%20%5BOfficial%20Music%20Video%5D.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Sweet but Psycho",
+        "artist": "Ava Max",
+        "url": "./mp3/Ava%20Max%20-%20Sweet%20but%20Psycho.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Rockabye (feat. Sean Paul & Anne-Marie) [Official Video]",
+        "artist": "Clean Bandit",
+        "url": "./mp3/Clean%20Bandit%20-%20Rockabye%20(feat.%20Sean%20Paul%20%26%20Anne-Marie)%20%5BOfficial%20Video%5D.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "I'm Good (Blue) [Official Music Video]",
+        "artist": "David Guetta & Bebe Rexha",
+        "url": "./mp3/David%20Guetta%20%26%20Bebe%20Rexha%20-%20I'm%20Good%20(Blue)%20%5BOfficial%20Music%20Video%5D.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Lost On You (Live)",
+        "artist": "LP",
+        "url": "./mp3/LP%20-%20Lost%20On%20You%20(Live).mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
     }
 ]
