@@ -54,6 +54,12 @@
         "cover": "<i class=\"fas fa-music\"></i>"
     },
     {
+        "title": "Burn",
+        "artist": "Ellie Goulding",
+        "url": "./mp3/Ellie%20Goulding%20-%20Burn.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
         "title": "Lost On You (Live)",
         "artist": "LP",
         "url": "./mp3/LP%20-%20Lost%20On%20You%20(Live).mp3",
