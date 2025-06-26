@@ -70,5 +70,11 @@
         "artist": "LP",
         "url": "./mp3/LP%20-%20Lost%20On%20You%20(Live).mp3",
         "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Zeynep Bastık",
+        "artist": "Lan",
+        "url": "./mp3/Lan%20-%20Zeynep%20Bast%C4%B1k.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
     }
 ]
