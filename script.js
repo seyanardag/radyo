@@ -283,4 +283,13 @@ $(document).ready(function () {
         playStation();
     });
 
+    // MP3 modunda şarkı bittiğinde otomatik olarak sonraki şarkıya geç
+    audio.addEventListener('ended', function () {
+        if (!isRadioMode) {
+            currentStationIndex = (currentStationIndex + 1) % stations.length;
+            updateStationInfo();
+            playStation();
+        }
+    });
+
 }); 

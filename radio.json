@@ -40,5 +40,11 @@
         "artist": "Canlı Yayın",
         "url": "https://officialbestfm.radyotvonline.net/bestfmofficial?/;stream.mp3",
         "cover": "https://www.canliradyodinle.fm/wp-content/uploads/best-fm-dinle-100x100.png"
+    },
+    {
+        "title": "Akra FM",
+        "artist": "Canlı Yayın",
+        "url": "https://d3r5bwwuab2v60.cloudfront.net/akracanli2/_definst_/livestream_aac/playlist.m3u8",
+        "cover": ""
     }
 ]
