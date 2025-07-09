@@ -75,6 +75,15 @@
             </div>
 
             <div class="playlist">
+                <div id="mp3SortBar" style="display:none; margin-bottom: 0.5rem; text-align:left;">
+                    <label for="mp3SortSelect" style="font-size:0.95rem; margin-right:0.5rem;">Sırala:</label>
+                    <select id="mp3SortSelect" style="padding:0.3rem 1rem; border-radius:8px; border:none;">
+                        <option value="json">JSON Sırası</option>
+                        <option value="date">Eklenme Tarihi (Yeni → Eski)</option>
+                        <option value="az">A-Z</option>
+                        <option value="za">Z-A</option>
+                    </select>
+                </div>
                 <div id="mp3Tabs" style="display:none; margin-bottom: 1rem;">
                     <button class="mp3-tab active" data-genre="pop">Pop</button>
                     <button class="mp3-tab" data-genre="slow">Slow</button>

@@ -19,12 +19,14 @@ fs.readdir(mp3Dir, (err, files) => {
         if (fileName.toLowerCase().includes('slow')) {
             genre = 'slow';
         }
+        const addedAt = new Date().toISOString();
         return {
             title: title.trim(),
             artist: artist.trim(),
             url: `./mp3/${encodeURIComponent(file)}`,
             cover: `<i class="fas fa-music"></i>`,
-            genre: genre
+            genre: genre,
+            addedAt: addedAt
         };
     });
 
