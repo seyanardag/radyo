@@ -168,6 +168,14 @@
         "addedAt": "2025-07-09T11:37:21.979Z"
     },
     {
+        "title": "Ruhumu Asla",
+        "artist": "Gulsen",
+        "url": "./mp3/Gulsen%20-%20Ruhumu%20Asla.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:47:51.617Z"
+    },
+    {
         "title": "Favorite",
         "artist": "Isabel LaRosa",
         "url": "./mp3/Isabel%20LaRosa%20-%20Favorite.mp3",
@@ -182,6 +190,14 @@
         "cover": "<i class=\"fas fa-music\"></i>",
         "genre": "pop",
         "addedAt": "2025-07-09T11:37:21.979Z"
+    },
+    {
+        "title": "On My Way",
+        "artist": "Kate Linn",
+        "url": "./mp3/Kate%20Linn%20-%20On%20My%20Way.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:47:51.617Z"
     },
     {
         "title": "Lost On You (Live)",
@@ -222,6 +238,14 @@
         "cover": "<i class=\"fas fa-music\"></i>",
         "genre": "pop",
         "addedAt": "2025-07-09T11:45:22.757Z"
+    },
+    {
+        "title": "Rock My Body",
+        "artist": "R3HAB INNA Sash",
+        "url": "./mp3/R3HAB%20INNA%20Sash%20-%20Rock%20My%20Body.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:47:51.617Z"
     },
     {
         "title": "Espresso",
