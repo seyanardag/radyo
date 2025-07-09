@@ -42,6 +42,12 @@
         "cover": "<i class=\"fas fa-music\"></i>"
     },
     {
+        "title": "Come Alive Carnaval de Paris",
+        "artist": "Dario G x Thomas Irwin",
+        "url": "./mp3/Dario%20G%20x%20Thomas%20Irwin%20-%20Come%20Alive%20Carnaval%20de%20Paris.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
         "title": "I'm Good (Blue) [Official Music Video]",
         "artist": "David Guetta & Bebe Rexha",
         "url": "./mp3/David%20Guetta%20%26%20Bebe%20Rexha%20-%20I'm%20Good%20(Blue)%20%5BOfficial%20Music%20Video%5D.mp3",
@@ -75,7 +81,18 @@
         "title": "Zeynep Bastık",
         "artist": "Lan",
         "url": "./mp3/Lan%20-%20Zeynep%20Bast%C4%B1k.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>",
-        "genre": "slow"
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Espresso",
+        "artist": "Sabrina Carpenter",
+        "url": "./mp3/Sabrina%20Carpenter%20-%20Espresso.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
+    },
+    {
+        "title": "Wait A Minute",
+        "artist": "WILLOW",
+        "url": "./mp3/WILLOW%20-%20Wait%20A%20Minute.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>"
     }
 ]
