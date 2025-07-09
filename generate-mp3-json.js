@@ -4,6 +4,14 @@ const path = require('path');
 const mp3Dir = path.join(__dirname, 'mp3');
 const outputFile = path.join(__dirname, 'mp3.json');
 
+// Eski mp3.json'u oku (varsa)
+let oldData = [];
+if (fs.existsSync(outputFile)) {
+    try {
+        oldData = JSON.parse(fs.readFileSync(outputFile, 'utf8'));
+    } catch (e) { oldData = []; }
+}
+
 fs.readdir(mp3Dir, (err, files) => {
     if (err) {
         console.error('Klasör okunamadı:', err);
@@ -19,7 +27,10 @@ fs.readdir(mp3Dir, (err, files) => {
         if (fileName.toLowerCase().includes('slow')) {
             genre = 'slow';
         }
-        const addedAt = new Date().toISOString();
+        // Eski kayıtlarda varsa addedAt'i koru
+        let addedAt = new Date().toISOString();
+        const old = oldData.find(item => item.url === `./mp3/${encodeURIComponent(file)}`);
+        if (old && old.addedAt) addedAt = old.addedAt;
         return {
             title: title.trim(),
             artist: artist.trim(),
