@@ -32,6 +32,9 @@
         <button id="modeSwitch" class="mode-btn">
             <i class="fas fa-broadcast-tower"></i>
         </button>
+        <button id="playlistSwitch" class="mode-btn" style="margin-top:10px;">
+            <i class="fas fa-list"></i>
+        </button>
     </div>
     <div class="container">
         <header>
@@ -85,6 +88,30 @@
         <footer>
             <p>&copy; 2025 Modern Radyo. Tüm hakları saklıdır.</p>
         </footer>
+        <div id="playlistPanel">
+            <div class="panel-content">
+                <button class="close-panel">&times;</button>
+                <h2>Şarkı Listelerim</h2>
+                <div id="playlistLists"></div>
+                <div id="addPlaylistArea" style="margin-top:1.5rem; text-align:center;">
+                    <input type="text" id="newPlaylistName" placeholder="Yeni liste adı"
+                        style="padding:0.5rem; border-radius:8px; border:none; width:60%;">
+                    <button id="addPlaylistBtn"
+                        style="padding:0.5rem 1rem; border-radius:8px; border:none; background:#fff; color:#2a5298; font-weight:bold; margin-left:0.5rem; cursor:pointer;">Ekle</button>
+                </div>
+                <div id="playlistSongsArea" style="margin-top:2rem;"></div>
+            </div>
+        </div>
+        <div id="addToPlaylistModal"
+            style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(30,60,114,0.85); z-index:3000; align-items:center; justify-content:center;">
+            <div
+                style="background:rgba(255,255,255,0.12); padding:2rem; border-radius:20px; max-width:350px; margin:auto; color:#fff; position:relative;">
+                <button id="closeAddToPlaylistModal"
+                    style="position:absolute; top:10px; right:15px; background:none; border:none; color:#fff; font-size:1.5rem; cursor:pointer;">&times;</button>
+                <h3 style="text-align:center;">Liste Seç</h3>
+                <div id="addToPlaylistListArea" style="margin-top:1rem;"></div>
+            </div>
+        </div>
     </div>
     <script src="script.js"></script>
 </body>

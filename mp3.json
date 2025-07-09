@@ -81,7 +81,8 @@
         "title": "Zeynep Bastık",
         "artist": "Lan",
         "url": "./mp3/Lan%20-%20Zeynep%20Bast%C4%B1k.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "slow"
     },
     {
         "title": "Espresso",

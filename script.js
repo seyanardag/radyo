@@ -130,45 +130,38 @@ $(document).ready(function () {
                 .addClass('station-number')
                 .text((index + 1).toString().padStart(2, '0'));
 
-            // Radyo resmi veya müzik ikonu
-            // let $img;
-            // if (station.cover.startsWith('<i')) {
-            //     $img = $('<div>')
-            //         .addClass('station-image')
-            //         .html(station.cover);
-            // } else {
-            //     $img = $('<img>')
-            //         .addClass('station-image')
-            //         .attr('src', station.cover)
-            //         .attr('alt', station.title);
-            // }
-
             let $img;
-
             if (station.cover && station.cover.trim().startsWith('<i')) {
-                // Eğer HTML ikon ise
                 $img = $('<div>')
                     .addClass('station-image')
                     .html(station.cover);
             } else if (station.cover) {
-                // Eğer resim URL'si ise
                 $img = $('<img>')
                     .addClass('station-image')
                     .attr('src', station.cover)
                     .attr('alt', station.title || '');
             } else {
-                // Eğer cover yoksa boş bir div oluştur
                 $img = $('<div>').addClass('station-image');
             }
 
-            // Radyo adı
             const $title = $('<span>')
                 .addClass('station-title')
                 .text(station.title);
 
-            $li.append($number, $img, $title);
+            // Listeye ekle butonu (sadece mp3 modunda)
+            let $addBtn = null;
+            if (!isRadioMode) {
+                $addBtn = $('<button>')
+                    .addClass('add-to-playlist-btn')
+                    .attr('title', 'Şarkı listesine ekle')
+                    .css({ background: 'none', border: 'none', color: '#4CAF50', fontSize: '1.3rem', cursor: 'pointer', marginLeft: '8px' })
+                    .html('<i class="fas fa-plus"></i>');
+            }
 
-            if (index === currentStationIndex) {
+            $li.append($number, $img, $title);
+            if ($addBtn) $li.append($addBtn);
+
+            if (stations.indexOf(station) === currentStationIndex) {
                 $li.addClass('active');
             }
 
@@ -318,6 +311,148 @@ $(document).ready(function () {
             updateStationInfo();
             playStation();
         }
+    });
+
+    // Playlist panelini aç/kapat
+    $('#playlistSwitch').click(function () {
+        $('#playlistPanel').fadeIn(200);
+        renderPlaylistLists();
+    });
+    $('#playlistPanel .close-panel').click(function () {
+        $('#playlistPanel').fadeOut(200);
+    });
+
+    // Playlistleri localStorage'dan yükle ve listele
+    function getPlaylists() {
+        return JSON.parse(localStorage.getItem('playlists') || '[]');
+    }
+    function renderPlaylistLists() {
+        const playlists = getPlaylists();
+        let html = '';
+        if (playlists.length === 0) {
+            html = '<p>Henüz bir şarkı listeniz yok.</p>';
+        } else {
+            html = '<ul>' + playlists.map((pl, i) => `<li data-index="${i}"><i class='fas fa-list'></i> ${pl.name} <span style='flex:1'></span> <span style='opacity:0.7'>${pl.songs.length} şarkı</span></li>`).join('') + '</ul>';
+        }
+        $('#playlistLists').html(html);
+    }
+
+    // Playlist ekleme
+    $('#addPlaylistBtn').click(function () {
+        const name = $('#newPlaylistName').val().trim();
+        if (!name) return;
+        let playlists = getPlaylists();
+        if (playlists.some(pl => pl.name === name)) {
+            alert('Bu isimde bir liste zaten var!');
+            return;
+        }
+        playlists.push({ name: name, songs: [] });
+        localStorage.setItem('playlists', JSON.stringify(playlists));
+        $('#newPlaylistName').val('');
+        renderPlaylistLists();
+    });
+
+    // Playlist'e tıklayınca şarkıları göster
+    $('#playlistLists').on('click', 'li', function () {
+        const index = $(this).data('index');
+        showPlaylistSongs(index);
+    });
+
+    // Seçili playlistin şarkılarını göster
+    function showPlaylistSongs(index) {
+        const playlists = getPlaylists();
+        const playlist = playlists[index];
+        if (!playlist) return;
+        let html = `<h3 style='text-align:center;'>${playlist.name}</h3>`;
+        if (playlist.songs.length === 0) {
+            html += '<p>Bu listede henüz şarkı yok.</p>';
+        } else {
+            html += '<ul>' + playlist.songs.map((song, i) =>
+                `<li data-song-index='${i}'>
+                    <span>${song.title} - ${song.artist}</span>
+                    <button class='playSongBtn' style='margin-left:auto; background:none; border:none; color:#fff; font-size:1.2rem; cursor:pointer;'><i class='fas fa-play'></i></button>
+                    <button class='removeSongBtn' style='background:none; border:none; color:#f55; font-size:1.2rem; cursor:pointer;'><i class='fas fa-trash'></i></button>
+                </li>`
+            ).join('') + '</ul>';
+        }
+        $('#playlistSongsArea').html(html);
+        $('#playlistSongsArea').data('playlist-index', index);
+    }
+
+    // Playlist şarkılarını kapatınca alanı temizle
+    $('#playlistPanel .close-panel').click(function () {
+        $('#playlistSongsArea').html('');
+    });
+
+    // Playlistteki şarkıyı çal
+    $('#playlistSongsArea').on('click', '.playSongBtn', function () {
+        const playlistIndex = $('#playlistSongsArea').data('playlist-index');
+        const songIndex = $(this).closest('li').data('song-index');
+        const playlists = getPlaylists();
+        const song = playlists[playlistIndex].songs[songIndex];
+        if (!song) return;
+        isRadioMode = false;
+        $('#mp3Tabs').hide();
+        $('h3').text('MP3 Listesi');
+        stations = playlists[playlistIndex].songs;
+        currentStationIndex = songIndex;
+        createPlaylist();
+        updateStationInfo();
+        playStation();
+        $('#playlistPanel').fadeOut(200);
+    });
+
+    // Playlistten şarkı çıkar
+    $('#playlistSongsArea').on('click', '.removeSongBtn', function () {
+        const playlistIndex = $('#playlistSongsArea').data('playlist-index');
+        const songIndex = $(this).closest('li').data('song-index');
+        let playlists = getPlaylists();
+        playlists[playlistIndex].songs.splice(songIndex, 1);
+        localStorage.setItem('playlists', JSON.stringify(playlists));
+        showPlaylistSongs(playlistIndex);
+        renderPlaylistLists();
+    });
+
+    // Listeye ekle butonuna tıklama
+    $('#playlist').on('click', '.add-to-playlist-btn', function (e) {
+        e.stopPropagation();
+        const songIndex = $(this).closest('li').data('index');
+        const song = stations[songIndex];
+        $('#addToPlaylistModal').data('song', song).fadeIn(200);
+        renderAddToPlaylistList();
+    });
+    $('#closeAddToPlaylistModal').click(function () {
+        $('#addToPlaylistModal').fadeOut(200);
+    });
+
+    // Modalda playlistleri listele
+    function renderAddToPlaylistList() {
+        const playlists = getPlaylists();
+        let html = '';
+        if (playlists.length === 0) {
+            html = '<p>Önce bir şarkı listesi oluşturun.</p>';
+        } else {
+            html = '<ul>' + playlists.map((pl, i) => `<li data-index="${i}" style='cursor:pointer;'><i class="fas fa-list"></i> ${pl.name}</li>`).join('') + '</ul>';
+        }
+        $('#addToPlaylistListArea').html(html);
+    }
+
+    // Modalda bir playlist seçilince şarkıyı ekle
+    $('#addToPlaylistListArea').on('click', 'li', function () {
+        const playlistIndex = $(this).data('index');
+        const song = $('#addToPlaylistModal').data('song');
+        let playlists = getPlaylists();
+        // Aynı şarkı zaten varsa ekleme
+        if (playlists[playlistIndex].songs.some(s => s.url === song.url)) {
+            alert('Bu şarkı zaten bu listede!');
+            return;
+        }
+        playlists[playlistIndex].songs.push(song);
+        localStorage.setItem('playlists', JSON.stringify(playlists));
+        $('#addToPlaylistModal').fadeOut(200);
+        renderPlaylistLists();
+        // Kullanıcıya kısa bir bildirim
+        $('<div>Şarkı listeye eklendi!</div>').css({ position: 'fixed', top: '30px', right: '30px', background: '#4CAF50', color: '#fff', padding: '10px 20px', borderRadius: '8px', zIndex: 9999 }).appendTo('body').delay(1200).fadeOut(400, function () { $(this).remove(); });
     });
 
 }); 
