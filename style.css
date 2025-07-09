@@ -296,3 +296,27 @@ footer {
     content: "\f001";
     /* MP3 ikonu */
 }
+
+/* MP3 Tabs */
+#mp3Tabs {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.mp3-tab {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px 20px 0 0;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.mp3-tab.active {
+    background: #fff;
+    color: #2a5298;
+    font-weight: bold;
+}

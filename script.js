@@ -6,6 +6,7 @@ $(document).ready(function () {
     let startTime = 0;
     let stations = [];
     let isRadioMode = true;
+    let selectedGenre = 'pop'; // MP3 modunda aktif tab
 
     // Albüm kapağına tıklama
     $('.album-art').click(function () {
@@ -32,12 +33,16 @@ $(document).ready(function () {
                 const fileName = file.replace('.mp3', '');
                 const title = fileName.includes(' - ') ? fileName.split(' - ')[1] : fileName;
                 const artist = fileName.includes(' - ') ? fileName.split(' - ')[0] : 'Bilinmeyen Sanatçı';
-
+                let genre = 'pop';
+                if (fileName.toLowerCase().includes('slow')) {
+                    genre = 'slow';
+                }
                 jsonData.push({
                     title: title,
                     artist: artist,
                     url: `./mp3/${encodeURIComponent(file)}`,
-                    cover: '<i class="fas fa-music"></i>'
+                    cover: '<i class="fas fa-music"></i>',
+                    genre: genre
                 });
             });
 
@@ -55,10 +60,27 @@ $(document).ready(function () {
 
         if (isRadioMode) {
             $icon.removeClass('fa-music').addClass('fa-broadcast-tower');
+            $('#mp3Tabs').hide();
+            $('h3').text('Radyo İstasyonları');
             loadStations('radio.json');
         } else {
             $icon.removeClass('fa-broadcast-tower').addClass('fa-music');
+            $('#mp3Tabs').show();
+            $('h3').text('MP3 Listesi');
+            selectedGenre = 'pop';
+            $('.mp3-tab').removeClass('active');
+            $('.mp3-tab[data-genre="pop"]').addClass('active');
             loadStations('mp3.json');
+        }
+    });
+
+    // MP3 tab tıklama
+    $('#mp3Tabs').on('click', '.mp3-tab', function () {
+        if (!isRadioMode) {
+            $('.mp3-tab').removeClass('active');
+            $(this).addClass('active');
+            selectedGenre = $(this).data('genre');
+            createPlaylist();
         }
     });
 
@@ -87,15 +109,21 @@ $(document).ready(function () {
 
     // İlk yükleme
     loadStations('radio.json');
+    $('#mp3Tabs').hide();
 
     // Çalma listesini oluştur
     function createPlaylist() {
         const $playlist = $('#playlist');
         $playlist.empty();
 
-        stations.forEach((station, index) => {
+        let filteredStations = stations;
+        if (!isRadioMode) {
+            filteredStations = stations.filter(station => (station.genre || 'pop') === selectedGenre);
+        }
+
+        filteredStations.forEach((station, index) => {
             const $li = $('<li>')
-                .data('index', index);
+                .data('index', stations.indexOf(station)); // Orijinal indexi koru
 
             // Sıra numarası
             const $number = $('<span>')

@@ -15,12 +15,16 @@ fs.readdir(mp3Dir, (err, files) => {
     const jsonList = mp3Files.map(file => {
         const fileName = file.replace('.mp3', '');
         const [artist, title] = fileName.includes(' - ') ? fileName.split(' - ') : ['Bilinmeyen Sanatçı', fileName];
-
+        let genre = 'pop';
+        if (fileName.toLowerCase().includes('slow')) {
+            genre = 'slow';
+        }
         return {
             title: title.trim(),
             artist: artist.trim(),
             url: `./mp3/${encodeURIComponent(file)}`,
-            cover: `<i class="fas fa-music"></i>`
+            cover: `<i class="fas fa-music"></i>`,
+            genre: genre
         };
     });
 
