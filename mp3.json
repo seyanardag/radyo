@@ -3,96 +3,112 @@
         "title": "Alone, Pt. II",
         "artist": "Alan Walker & Ava Max",
         "url": "./mp3/Alan%20Walker%20%26%20Ava%20Max%20-%20Alone%2C%20Pt.%20II.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Hymn For The Weekend [Remix]",
         "artist": "Alan Walker vs Coldplay",
         "url": "./mp3/Alan%20Walker%20vs%20Coldplay%20-%20Hymn%20For%20The%20Weekend%20%5BRemix%5D.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Ciao Adios [Official Video]",
         "artist": "Anne-Marie",
         "url": "./mp3/Anne-Marie%20-%20Ciao%20Adios%20%5BOfficial%20Video%5D.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "My Head & My Heart",
         "artist": "Ava Max",
         "url": "./mp3/Ava%20Max%20-%20My%20Head%20%26%20My%20Heart.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "So Am I [Official Music Video]",
         "artist": "Ava Max",
         "url": "./mp3/Ava%20Max%20-%20So%20Am%20I%20%5BOfficial%20Music%20Video%5D.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Sweet but Psycho",
         "artist": "Ava Max",
         "url": "./mp3/Ava%20Max%20-%20Sweet%20but%20Psycho.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Rockabye (feat. Sean Paul & Anne-Marie) [Official Video]",
         "artist": "Clean Bandit",
         "url": "./mp3/Clean%20Bandit%20-%20Rockabye%20(feat.%20Sean%20Paul%20%26%20Anne-Marie)%20%5BOfficial%20Video%5D.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
-        "title": "Come Alive Carnaval de Paris",
+        "title": "Come Alive Carnaval de Pars",
         "artist": "Dario G x Thomas Irwin",
-        "url": "./mp3/Dario%20G%20x%20Thomas%20Irwin%20-%20Come%20Alive%20Carnaval%20de%20Paris.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "url": "./mp3/Dario%20G%20x%20Thomas%20Irwin%20-%20Come%20Alive%20Carnaval%20de%20Pars.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "I'm Good (Blue) [Official Music Video]",
         "artist": "David Guetta & Bebe Rexha",
         "url": "./mp3/David%20Guetta%20%26%20Bebe%20Rexha%20-%20I'm%20Good%20(Blue)%20%5BOfficial%20Music%20Video%5D.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Be The One (Official Music Video)",
         "artist": "Dua Lipa",
         "url": "./mp3/Dua%20Lipa%20-%20Be%20The%20One%20(Official%20Music%20Video).mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Burn",
         "artist": "Ellie Goulding",
         "url": "./mp3/Ellie%20Goulding%20-%20Burn.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Love Me Like You Do (Lyrics)",
         "artist": "Ellie Goulding",
         "url": "./mp3/Ellie%20Goulding%20-%20Love%20Me%20Like%20You%20Do%20(Lyrics).mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Lost On You (Live)",
         "artist": "LP",
         "url": "./mp3/LP%20-%20Lost%20On%20You%20(Live).mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Zeynep Bastık",
         "artist": "Lan",
         "url": "./mp3/Lan%20-%20Zeynep%20Bast%C4%B1k.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Espresso",
         "artist": "Sabrina Carpenter",
         "url": "./mp3/Sabrina%20Carpenter%20-%20Espresso.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     },
     {
         "title": "Wait A Minute",
         "artist": "WILLOW",
         "url": "./mp3/WILLOW%20-%20Wait%20A%20Minute.mp3",
-        "cover": "<i class=\"fas fa-music\"></i>"
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop"
     }
 ]
