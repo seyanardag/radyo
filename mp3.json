@@ -24,6 +24,14 @@
         "addedAt": "2025-07-09T11:37:21.978Z"
     },
     {
+        "title": "Into Your Arms x Alone, Pt. II",
+        "artist": "Ava Max",
+        "url": "./mp3/Ava%20Max%20-%20Into%20Your%20Arms%20x%20Alone%2C%20Pt.%20II.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.756Z"
+    },
+    {
         "title": "My Head & My Heart",
         "artist": "Ava Max",
         "url": "./mp3/Ava%20Max%20-%20My%20Head%20%26%20My%20Heart.mp3",
@@ -48,6 +56,14 @@
         "addedAt": "2025-07-09T11:37:21.978Z"
     },
     {
+        "title": "Whos Laughing Now",
+        "artist": "Ava Max",
+        "url": "./mp3/Ava%20Max%20-%20Whos%20Laughing%20Now.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.757Z"
+    },
+    {
         "title": "Rockabye (feat. Sean Paul & Anne-Marie) [Official Video]",
         "artist": "Clean Bandit",
         "url": "./mp3/Clean%20Bandit%20-%20Rockabye%20(feat.%20Sean%20Paul%20%26%20Anne-Marie)%20%5BOfficial%20Video%5D.mp3",
@@ -70,6 +86,14 @@
         "cover": "<i class=\"fas fa-music\"></i>",
         "genre": "pop",
         "addedAt": "2025-07-09T11:37:21.978Z"
+    },
+    {
+        "title": "Never Going Home Tonight",
+        "artist": "David Guetta Alesso",
+        "url": "./mp3/David%20Guetta%20Alesso%20-%20Never%20Going%20Home%20Tonight.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.757Z"
     },
     {
         "title": "Be The One (Official Music Video)",
@@ -192,6 +216,14 @@
         "addedAt": "2025-07-09T11:37:21.979Z"
     },
     {
+        "title": "Calvin Harris  Ellie Goulding",
+        "artist": "Outside",
+        "url": "./mp3/Outside%20-%20Calvin%20Harris%20%20Ellie%20Goulding.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.757Z"
+    },
+    {
         "title": "Espresso",
         "artist": "Sabrina Carpenter",
         "url": "./mp3/Sabrina%20Carpenter%20-%20Espresso.mp3",
@@ -206,6 +238,22 @@
         "cover": "<i class=\"fas fa-music\"></i>",
         "genre": "pop",
         "addedAt": "2025-07-09T11:40:04.732Z"
+    },
+    {
+        "title": "The Motto",
+        "artist": "Ti_sto & Ava Max",
+        "url": "./mp3/Ti_sto%20%26%20Ava%20Max%20-%20The%20Motto.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.757Z"
+    },
+    {
+        "title": "Dont Be Shy",
+        "artist": "Tisto Karol G",
+        "url": "./mp3/Tisto%20Karol%20G%20-%20Dont%20Be%20Shy.mp3",
+        "cover": "<i class=\"fas fa-music\"></i>",
+        "genre": "pop",
+        "addedAt": "2025-07-09T11:45:22.757Z"
     },
     {
         "title": "Wait A Minute",
